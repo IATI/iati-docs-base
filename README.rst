@@ -95,12 +95,13 @@ Assuming a unix based system:
 Built docs are in `docs/_build/dirhtml`.
 
 
-To view the built docs::
+To view the built docs:
 
 .. code-block:: bash
 
   cd _build/dirhtml
   python -m http.server
+
 
 Then go to http://localhost:8000/ in a browser.
 
