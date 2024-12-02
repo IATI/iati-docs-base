@@ -21,6 +21,12 @@ In order to create a new repo using this as a template, you need permission to c
 
 If you have this permission, then click the "Use this template" button on the repo to create a new repo, using this as a template. 
 
+Configure the docs site
+-----------------------
+
+Go through docs/conf.py and replace all references to "IATI Validator" with the name of whatever you're documenting. 
+
+
 Set up ReadTheDocs
 ------------------
 
@@ -53,7 +59,7 @@ There are three ways to build the documentation:
 
 * Build it locally
 * Using ReadTheDocs
-* (if you use VS Code), use the included compile script
+* If you use VS Code, using the included compile script
 
 Using ReadTheDocs
 -----------------
@@ -67,7 +73,7 @@ Build the docs locally
 Assuming a unix based system:
 
 .. code-block:: bash
-  
+
   # Make sure you have python3 venv, e.g. for Ubuntu
   # If you're not sure, try creating a venv, and see if it errors
   sudo apt-get install python3-venv
@@ -89,7 +95,7 @@ Assuming a unix based system:
 Built docs are in `docs/_build/dirhtml`.
 
 
-To then view the built docs::
+To view the built docs::
 
 .. code-block:: bash
 
@@ -129,9 +135,9 @@ Extract Strings
 
 .. code-block:: bash
 
-   cd docs
-   make gettext
-   # .pot files are in _build/locale
+  cd docs
+  make gettext
+  # .pot files are in _build/locale
 
 
 Send for translation & Receive translations
@@ -153,8 +159,8 @@ If building locally:
 
 .. code-block:: bash
 
-   cd docs
-   make -e SPHINXOPTS="-D language='fr'" dirhtml
+  cd docs
+  make -e SPHINXOPTS="-D language='fr'" dirhtml
 
 Built docs are in `docs/_build/dirhtml`.
 
