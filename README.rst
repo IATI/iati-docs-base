@@ -21,16 +21,25 @@ In order to create a new repo using this as a template, you need permission to c
 
 If you have this permission, then click the "Use this template" button on the repo to create a new repo, using this as a template. 
 
+Configure the docs site
+-----------------------
+
+Go through docs/conf.py and replace all references to "IATI Validator" with the name of whatever you're documenting. 
+
+
 Set up ReadTheDocs
 ------------------
 
-Then, set up the repo on ReadTheDocs by `logging in to app.readthedocs.com <https://app.readthedocs.com/dashboard/>`_ using GitHub. Permissions on ReadTheDocs are set via GitHub so you have to log in using GitHub, otherwise you won't be able to access anything. Also note that the link above is to the pre-release (as of October 2024) version of ReadTheDocs and cannot be reached via a link from the RTD homepage. The following instructions only work on the pre-release RTD interface. 
+Then, set up the repo on ReadTheDocs by `logging in to app.readthedocs.com <https://app.readthedocs.com/dashboard/>`_ using GitHub. Permissions on ReadTheDocs are set via GitHub so you have to log in using GitHub, otherwise you won't be able to access anything.
 
 Once logged in, click Add Project and follow through the flow to add the project. If you get a banner saying "Failed to add deploy key to project Failed to add deploy key to GitHub project, ensure you have the correct permissions and try importing again.", you can ignore it(!) 
 
 Repeat the Add Project flow again for each language that you're adding translations for, using the same repo and following the convention of appending -fr/-es etc at the end of each project name, and setting the Language of the project to the appropriate value. 
 
-Finally, go to the Settings of the English version of the docs, click "translations" in the menu, and add the extra projects you just created as Translations of the first. 
+Then, go to the Settings of the English version of the docs, click "translations" in the menu, and add the extra projects you just created as Translations of the first. 
+
+Finally, go through each of the projects that you've just created, go to their Settings, and ensure that the Privacy Level is set to Public and that the "Build pull requests for this project" box is checked. 
+
 
 Write your content
 ------------------
@@ -50,7 +59,7 @@ There are three ways to build the documentation:
 
 * Build it locally
 * Using ReadTheDocs
-* (if you use VS Code), use the included compile script
+* If you use VS Code, using the included compile script
 
 Using ReadTheDocs
 -----------------
@@ -64,7 +73,7 @@ Build the docs locally
 Assuming a unix based system:
 
 .. code-block:: bash
-  
+
   # Make sure you have python3 venv, e.g. for Ubuntu
   # If you're not sure, try creating a venv, and see if it errors
   sudo apt-get install python3-venv
@@ -86,7 +95,7 @@ Assuming a unix based system:
 Built docs are in `docs/_build/dirhtml`.
 
 
-To then view the built docs::
+To view the built docs::
 
 .. code-block:: bash
 
@@ -126,9 +135,9 @@ Extract Strings
 
 .. code-block:: bash
 
-   cd docs
-   make gettext
-   # .pot files are in _build/locale
+  cd docs
+  make gettext
+  # .pot files are in _build/locale
 
 
 Send for translation & Receive translations
@@ -150,8 +159,8 @@ If building locally:
 
 .. code-block:: bash
 
-   cd docs
-   make -e SPHINXOPTS="-D language='fr'" dirhtml
+  cd docs
+  make -e SPHINXOPTS="-D language='fr'" dirhtml
 
 Built docs are in `docs/_build/dirhtml`.
 
