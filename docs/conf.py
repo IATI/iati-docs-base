@@ -141,7 +141,13 @@ html_css_files = [
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
-# html_theme_options = {}
+html_theme_options = {
+    "github_repository": "https://github.com/IATI/iati-docs-base",
+    "header_title_text": "IATI Docs Base",
+    "languages": ["en"],
+    "tool_name": "IATI Docs Base",
+    "tool_url": "https://example-tool.iatistandard.org/",
+}
 
 # Add any paths that contain custom themes here, relative to this directory.
 # html_theme_path = []

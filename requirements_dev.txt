@@ -51,7 +51,7 @@ exceptiongroup==1.2.2
     # via anyio
 h11==0.14.0
     # via uvicorn
-iati-sphinx-theme==1.6.1
+iati-sphinx-theme==1.11.0
     # via -r requirements.txt
 idna==3.10
     # via
