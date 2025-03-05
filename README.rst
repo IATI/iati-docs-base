@@ -105,7 +105,12 @@ Contributing
 
 In order to contribute to this documentation, create a new branch and make your suggested changes. Then, open a Pull Request; this will build a preview of your changes and let you see what the complete site will look like. 
 
+Formatting
+----------
 
+The Python code in this repository uses the python [black](https://github.com/psf/black) formatter.
+If editing in VSCode, the project is set up to format automatically on save.
+To format manually, run `black .`:
 
 Translations
 ============

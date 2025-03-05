@@ -21,6 +21,8 @@ babel==2.16.0
     #   -r requirements.txt
     #   sphinx
     #   sphinx-intl
+black==25.1.0
+    # via -r requirements_dev.in
 certifi==2024.8.30
     # via
     #   -r requirements.txt
@@ -32,6 +34,7 @@ charset-normalizer==3.4.0
 click==8.1.7
     # via
     #   -r requirements.txt
+    #   black
     #   sphinx-intl
     #   uvicorn
 colorama==0.4.6
@@ -99,6 +102,8 @@ mdurl==0.1.2
     # via
     #   -r requirements.txt
     #   markdown-it-py
+mypy-extensions==1.0.0
+    # via black
 myst-parser==4.0.0
     # via
     #   -r requirements.txt
@@ -107,7 +112,12 @@ myst-parser==4.0.0
 packaging==24.2
     # via
     #   -r requirements.txt
+    #   black
     #   sphinx
+pathspec==0.12.1
+    # via black
+platformdirs==4.3.6
+    # via black
 pygments==2.18.0
     # via
     #   -r requirements.txt
@@ -184,10 +194,12 @@ starlette==0.46.0
 tomli==2.2.1
     # via
     #   -r requirements.txt
+    #   black
     #   sphinx
 typing-extensions==4.12.2
     # via
     #   anyio
+    #   black
     #   uvicorn
 urllib3==2.2.3
     # via

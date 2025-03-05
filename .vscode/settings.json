@@ -42,5 +42,6 @@
     "cSpell.spellCheckDelayMs": 50,
     "cSpell.words": [
         "eamodio",
-    ]
+    ],
+    "editor.formatOnSave": true
 }

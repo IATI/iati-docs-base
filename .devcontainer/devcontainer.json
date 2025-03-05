@@ -26,7 +26,8 @@
 				"lextudio.restructuredtext-pack",
 				"ms-python.debugpy",
 				"streetsidesoftware.code-spell-checker",
-				"eamodio.gitlens"
+				"eamodio.gitlens",
+				"ms-python.black-formatter"
 			]
 		}
 	}
