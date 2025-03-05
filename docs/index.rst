@@ -11,4 +11,3 @@ This file is where your documentation goes.
     :caption: Documentation
 
     Home <self>
-

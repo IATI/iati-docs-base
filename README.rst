@@ -26,7 +26,6 @@ Configure the docs site
 
 Go through docs/conf.py and replace all references to "IATI Validator" with the name of whatever you're documenting. 
 
-
 Set up ReadTheDocs
 ------------------
 
@@ -39,7 +38,6 @@ Repeat the Add Project flow again for each language that you're adding translati
 Then, go to the Settings of the English version of the docs, click "translations" in the menu, and add the extra projects you just created as Translations of the first. 
 
 Finally, go through each of the projects that you've just created, go to their Settings, and ensure that the Privacy Level is set to Public and that the "Build pull requests for this project" box is checked. 
-
 
 Write your content
 ------------------
@@ -65,7 +63,6 @@ Using ReadTheDocs
 -----------------
 
 ReadTheDocs will automatically build when a new Pull Request is opened on GitHub, whenever a new commit is pushed to an open Pull Request, or when a Pull Request is merged.
-
 
 View the docs locally with live preview
 ---------------------------------------
@@ -99,7 +96,6 @@ Using VS Code
 
 A devcontainer.json and launch.json are supplied which add sphinx-autobuild as a Run option
 
-
 Contributing
 ============
 
@@ -123,7 +119,6 @@ The process for getting documentation translated is:
 * Check the .po files into the repo
 * Re-run the build process with the translations
 
-
 Extract Strings
 ---------------
 
@@ -132,7 +127,6 @@ Extract Strings
   cd docs
   make gettext
   # .pot files are in _build/locale
-
 
 Send for translation & Receive translations
 -------------------------------------------
@@ -157,7 +151,3 @@ If building locally:
   make -e SPHINXOPTS="-D language='fr'" dirhtml
 
 Built docs are in `docs/_build/dirhtml`.
-
-
-
-
