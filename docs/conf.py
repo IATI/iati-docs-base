@@ -58,7 +58,7 @@ source_suffix = [".rst"]
 master_doc = "index"
 
 # General information about the project.
-project = "IATI Validator Docs"
+project = "IATI Tool: Documentation"
 copyright = (
     "2024 United Nations Development Programme, on behalf of the IATI Secretariat"
 )
@@ -145,8 +145,6 @@ html_theme_options = {
     "github_repository": "https://github.com/IATI/iati-docs-base",
     "header_title_text": "IATI Docs Base",
     "languages": ["en"],
-    "tool_name": "IATI Docs Base",
-    "tool_url": "https://example-tool.iatistandard.org/",
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
