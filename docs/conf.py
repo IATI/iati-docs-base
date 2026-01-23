@@ -63,7 +63,7 @@ if os.environ.get("READTHEDOCS") == "True":
     language_slug = os.environ.get("READTHEDOCS_LANGUAGE", "en")
 
     # RTD's standard download URL pattern
-    pdf_url = f"https://{project_slug}.readthedocs.io/_/downloads/{language_slug}/{version_slug}/pdf/"
+    pdf_url = f"https://{project_slug}.readthedocs-hosted.com/_/downloads/{language_slug}/{version_slug}/pdf/"
 
     html_context["pdf_url"] = pdf_url
 
