@@ -61,10 +61,10 @@ if os.environ.get("READTHEDOCS") == "True":
     project_slug = os.environ.get("READTHEDOCS_PROJECT")
     version_slug = os.environ.get("READTHEDOCS_VERSION")
     language_slug = os.environ.get("READTHEDOCS_LANGUAGE", "en")
-    
+
     # RTD's standard download URL pattern
     pdf_url = f"https://{project_slug}.readthedocs.io/_/downloads/{language_slug}/{version_slug}/pdf/"
-    
+
     html_context["pdf_url"] = pdf_url
 
 # -- Options for Texinfo output -------------------------------------------
