@@ -85,7 +85,7 @@ Assuming a unix based system:
   pip install -r requirements_dev.txt
   
   # Run sphinx-autobuild
-  sphinx-autobuild docs docs/_build/html
+  sphinx-autobuild -b dirhtml docs docs/_build/html
 
 Then go to http://localhost:8000/ in a browser.
 When you save changes to a file, it should update in the browser automatically.
