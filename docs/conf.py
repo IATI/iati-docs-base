@@ -2,6 +2,9 @@
 #
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
+#
+# NOTE: This file is designed to be synced across all IATI documentation repos.
+# Project-specific settings are imported from project_info.py.
 
 import os
 
@@ -10,14 +13,15 @@ from sphinx.locale import get_translation
 
 import iati_sphinx_theme
 
+# Import project-specific settings
+from project_info import project, github_repository, languages
+
 MESSAGE_CATALOG_NAME = "iati-sphinx-theme"
 _ = get_translation(MESSAGE_CATALOG_NAME)
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
-# These are kept for compatibility but shouldn't appear anywhere on the final website.
 
-project = "IATI Docs Base"
 author = "IATI Secretariat"
 language = "en"
 
@@ -39,11 +43,11 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 html_theme = "iati_sphinx_theme"
 html_theme_options = {  # See https://iati-sphinx-theme.readthedocs-hosted.com/en/latest/#configuration for additional options and info
-    "github_repository": "https://github.com/IATI/sphinx-theme",
-    "header_title_text": _("IATI Docs Base"),
+    "github_repository": github_repository,
+    "header_title_text": _(project),
     "header_eyebrow_text": _("IATI Documentation"),
-    "languages": ["en", "fr", "es"],
-    "project_title": _("IATI Docs Base"),
+    "languages": languages,
+    "project_title": _(project),
     "show_download_links": True,
 }
 
