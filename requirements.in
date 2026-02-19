@@ -1,6 +1,7 @@
 sphinx
 sphinx-togglebutton
 sphinxcontrib-opendataservices
+sphinxcontrib-redoc
 sphinxcontrib-video
 sphinxcontrib-youtube
 sphinx-intl
