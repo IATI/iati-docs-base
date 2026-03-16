@@ -10,3 +10,13 @@ github_repository = "https://github.com/IATI/iati-docs-base"
 
 # Supported languages for the documentation
 languages = ["en", "fr", "es"]
+
+redoc = [
+    {
+        "name": "Widgets API",
+        "page": "api-docs/test-widget-api",
+        "spec": "specifications/test-widget-api.yaml",
+        "embed": True,
+        "template": "_templates/redoc-custom.j2",
+    }
+]
