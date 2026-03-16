@@ -16,7 +16,7 @@ babel==2.18.0
     #   sphinx-intl
 certifi==2026.2.25
     # via requests
-charset-normalizer==3.4.5
+charset-normalizer==3.4.6
     # via requests
 click==8.3.1
     # via sphinx-intl
@@ -126,7 +126,7 @@ sphinxcontrib-opendataservices-jsonschema==0.7.1
     # via sphinxcontrib-opendataservices
 sphinxcontrib-qthelp==2.0.0
     # via sphinx
-sphinxcontrib-redoc @ git+https://github.com/OpenDataServices/sphinxcontrib-redoc.git@fix-setuptools
+sphinxcontrib-redoc @ git+https://github.com/OpenDataServices/sphinxcontrib-redoc.git@main
     # via -r requirements.in
 sphinxcontrib-serializinghtml==2.0.0
     # via sphinx
