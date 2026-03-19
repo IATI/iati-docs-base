@@ -7,7 +7,7 @@ Includes:
 * IATI documentation Sphinx theme
 * Scaffolding for translation
 * Instructions on how to create a new IATI documentation site
-* The "kitchen sink" comprehensive demonstration of Sphinx features rendered using the theme
+* The "kitchen sink": a comprehensive demonstration of Sphinx features rendered using the theme
 
 For more information on using the `IATI documentation site Sphinx theme <https://github.com/IATI/sphinx-theme>`_ , see `the theme documentation <https://iati-sphinx-theme.readthedocs-hosted.com/en/latest/>`_
 
@@ -24,20 +24,32 @@ If you have this permission, then click the "Use this template" button on the re
 Configure the docs site
 -----------------------
 
-Go through docs/conf.py and replace all references to "IATI Validator" with the name of whatever you're documenting. 
+Go through docs/project_info.py and update with all the details of whatever you're documenting. 
 
 Set up ReadTheDocs
 ------------------
 
 Then, set up the repo on ReadTheDocs by `logging in to app.readthedocs.com <https://app.readthedocs.com/dashboard/>`_ using GitHub. Permissions on ReadTheDocs are set via GitHub so you have to log in using GitHub, otherwise you won't be able to access anything.
 
-Once logged in, click Add Project and follow through the flow to add the project. If you get a banner saying "Failed to add deploy key to project Failed to add deploy key to GitHub project, ensure you have the correct permissions and try importing again.", you can ignore it(!) 
+Once logged in, click Add Project and follow through the flow to add the project. You can ignore a banner saying "Failed to add deploy key to GitHub project, ensure you have the correct permissions and try importing again.", if it does appear for you. 
 
 Repeat the Add Project flow again for each language that you're adding translations for, using the same repo and following the convention of appending -fr/-es etc at the end of each project name, and setting the Language of the project to the appropriate value. 
 
 Then, go to the Settings of the English version of the docs, click "translations" in the menu, and add the extra projects you just created as Translations of the first. 
 
 Finally, go through each of the projects that you've just created, go to their Settings, and ensure that the Privacy Level is set to Public and that the "Build pull requests for this project" box is checked. 
+
+Set up the domain name
+----------------------
+
+In order to have your project appear at docs.whatever.iatistandard.org:
+
+Go to the ReadTheDocs project for the English language version of the project. Under the Hosting -> Domains menu item, enter the domain that you want the project to appear at and check the "Canonical" box. Click Save, and keep a note of the "CNAME Target" displayed.
+
+Ask someone with access to Cloudflare (any IATI developer, including Rob) to set up DNS for you. They will need the CNAME Target from earlier, and the domain that you want the project to live on. 
+
+Once they've done their work, give it 5-10 minutes to all sync up and settle down, then it should be working. 
+
 
 Write your content
 ------------------
