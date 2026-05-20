@@ -30,6 +30,7 @@ language = "en"
 
 extensions = [
     "sphinx.ext.autodoc",
+    "sphinx.ext.autosectionlabel",
     "sphinx.ext.todo",
     "sphinxcontrib.redoc",
     "sphinxcontrib.video",
