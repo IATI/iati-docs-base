@@ -47,7 +47,7 @@ html_theme = "iati_sphinx_theme"
 html_theme_options = {  # See https://iati-sphinx-theme.readthedocs-hosted.com/en/latest/#configuration for additional options and info
     "github_repository": github_repository,
     "header_title_text": _(project),
-    "header_eyebrow_text": _("IATI Documentation"),
+    "header_eyebrow_text": _(eyebrow_text),
     "languages": languages,
     "project_title": _(project),
     "show_download_links": True,
