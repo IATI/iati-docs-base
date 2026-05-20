@@ -14,7 +14,7 @@ from sphinx.locale import get_translation
 import iati_sphinx_theme
 
 # Import project-specific settings
-from project_info import project, github_repository, languages, redoc
+from project_info import project, eyebrow_text, github_repository, languages, redoc
 
 MESSAGE_CATALOG_NAME = "iati-sphinx-theme"
 _ = get_translation(MESSAGE_CATALOG_NAME)
@@ -47,7 +47,7 @@ html_theme = "iati_sphinx_theme"
 html_theme_options = {  # See https://iati-sphinx-theme.readthedocs-hosted.com/en/latest/#configuration for additional options and info
     "github_repository": github_repository,
     "header_title_text": _(project),
-    "header_eyebrow_text": _("IATI Documentation"),
+    "header_eyebrow_text": _(eyebrow_text),
     "languages": languages,
     "project_title": _(project),
     "show_download_links": True,
