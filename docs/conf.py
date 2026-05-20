@@ -14,7 +14,7 @@ from sphinx.locale import get_translation
 import iati_sphinx_theme
 
 # Import project-specific settings
-from project_info import project, github_repository, languages, redoc
+from project_info import project, eyebrow_text, github_repository, languages, redoc
 
 MESSAGE_CATALOG_NAME = "iati-sphinx-theme"
 _ = get_translation(MESSAGE_CATALOG_NAME)
