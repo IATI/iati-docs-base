@@ -23,3 +23,7 @@ redoc = [
         "template": "_templates/redoc-custom.j2",
     }
 ]
+
+# Per-tool navigation link(s) shown in the page header. Empty for repos
+# that don't represent a single tool (e.g. the docs base, multi-tool sites).
+tool_nav_items = {}
