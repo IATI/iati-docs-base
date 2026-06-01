@@ -16,12 +16,24 @@ import iati_sphinx_theme
 # Import project-specific settings
 from project_info import (
     project,
+    tool_url,
+    nav_label,
     eyebrow_text,
     github_repository,
     languages,
     redoc,
-    tool_nav_items,
 )
+
+# Derive nav and title from project_info. When tool_url is set, the
+# header shows two nav items: the tool itself, and a self-link to the
+# documentation. When unset, just the self-link.
+_nav_label = nav_label or project
+if tool_url:
+    tool_nav_items = {_nav_label: tool_url}
+    project_title = f"{_nav_label}: Documentation"
+else:
+    tool_nav_items = {}
+    project_title = project
 
 MESSAGE_CATALOG_NAME = "iati-sphinx-theme"
 _ = get_translation(MESSAGE_CATALOG_NAME)
@@ -56,7 +68,7 @@ html_theme_options = {  # See https://iati-sphinx-theme.readthedocs-hosted.com/e
     "header_title_text": _(project),
     "header_eyebrow_text": _(eyebrow_text),
     "languages": languages,
-    "project_title": _(project),
+    "project_title": _(project_title),
     "show_download_links": True,
     "tool_nav_items": tool_nav_items,
 }
