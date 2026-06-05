@@ -11,7 +11,12 @@
                 "docs",
                 "docs/_build/html"
             ],
-            "justMyCode": false
+            "justMyCode": false,
+            "preLaunchTask": "Bootstrap venv",
+            "python": "${workspaceFolder}/.ve/bin/python",
+            "windows": {
+                "python": "${workspaceFolder}\\.ve\\Scripts\\python.exe"
+            }
         }
     ]
 }

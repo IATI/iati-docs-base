@@ -1,0 +1,37 @@
+{
+    // Bootstraps the local .ve virtualenv used by the "Sphinx Autobuild"
+    // launch config. Runs as that config's preLaunchTask so a fresh clone
+    // works on the first F5 without any manual setup.
+    //
+    // It creates .ve if missing, then (re)installs both requirement sets so
+    // an existing-but-incomplete venv self-heals. Local Python version is not
+    // pinned on purpose: any working python3 will do, because production builds
+    // happen on Read the Docs against the pinned toolchain, not locally.
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Bootstrap venv",
+            "type": "shell",
+            "osx": {
+                "command": "test -d .ve || python3 -m venv .ve; .ve/bin/python -m pip install -q -r requirements.txt -r requirements_dev.txt"
+            },
+            "linux": {
+                "command": "test -d .ve || python3 -m venv .ve; .ve/bin/python -m pip install -q -r requirements.txt -r requirements_dev.txt"
+            },
+            "windows": {
+                "command": "if (-not (Test-Path .ve)) { python -m venv .ve }; .ve\\Scripts\\python.exe -m pip install -q -r requirements.txt -r requirements_dev.txt",
+                "options": {
+                    "shell": {
+                        "executable": "powershell.exe",
+                        "args": ["-NoProfile", "-Command"]
+                    }
+                }
+            },
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        }
+    ]
+}
