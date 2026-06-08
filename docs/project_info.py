@@ -2,6 +2,8 @@
 # This file contains settings that vary per repository.
 # The main conf.py imports these values and can be synced across all repos.
 
+from urllib.parse import urlparse
+
 # Project name (used for titles, headers, and Sphinx internals)
 project = "IATI Docs Base"
 
@@ -13,6 +15,10 @@ project = "IATI Docs Base"
 # When set, the page header gets a two-item nav: a link to the tool, and
 # a self-link labelled "<name>: Documentation". When unset, the header
 # shows a single self-link labelled with the project name.
+#
+# Use the URL without "www." - the hostname is reused as the Plausible
+# analytics domain (see plausible_domain below), so check it matches the
+# site URL registered in Plausible.
 tool_url = None
 
 # Short label used in the nav. Defaults to ``project``. Override only
@@ -25,6 +31,10 @@ eyebrow_text = "IATI Tools: Documentation"
 
 # GitHub repository URL (used by the theme for the "Source code at GitHub" footer link)
 github_repository = "https://github.com/IATI/iati-docs-base"
+
+# Plausible analytics domain, derived from tool_url so docs are tracked
+# under the tool's site. Set to None to disable, or a string to override.
+plausible_domain = urlparse(tool_url).hostname if tool_url else None
 
 # Supported languages for the documentation
 languages = ["en", "fr", "es"]
