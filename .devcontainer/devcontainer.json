@@ -10,6 +10,8 @@
 	// "forwardPorts": [],
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "pip3 install --user pip-tools && pip3 install --user -r requirements_dev.txt",
+	// Warn if a host-built .ve is present; its python symlink dangles here and breaks the Sphinx Autobuild debugger.
+	"postStartCommand": "if [ -e .ve ] && ! .ve/bin/python -c '' 2>/dev/null; then printf '\\n\\033[1;31m⚠  A host-built .ve was found and its Python does not work in this container.\\033[0m\\n   It will break the Sphinx Autobuild debugger. The devcontainer installs deps via pip (no venv needed).\\n   Fix: remove the .ve, then rebuild/reopen.\\n\\n'; fi",
 	// Configure tool-specific properties.
 	"customizations": {
 		// Configure properties specific to VS Code.
