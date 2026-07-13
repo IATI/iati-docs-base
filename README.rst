@@ -106,7 +106,10 @@ To change the language, edit the `language` variable in `docs/conf.py`.
 Using VS Code
 -------------
 
-A devcontainer.json and launch.json are supplied which add sphinx-autobuild as a Run option
+A devcontainer.json and launch.json are supplied which add sphinx-autobuild as a Run option. 
+
+To build the PDF without VS Code, run ``make -C docs latexpdf``; the output is written to
+``docs/_build/latex/``.
 
 Contributing
 ============

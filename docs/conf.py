@@ -7,11 +7,19 @@
 # Project-specific settings are imported from project_info.py.
 
 import os
+import sys
 
 import sphinx.application
 from sphinx.locale import get_translation
 
 import iati_sphinx_theme
+
+# Make project_info importable regardless of how Sphinx is invoked. `python -m
+# sphinx`/sphinx-autobuild add the current working directory to sys.path
+# automatically when run from this directory, but installed console scripts
+# like `sphinx-build` (e.g. via `make latexpdf`) don't - their sys.path[0] is
+# their own bin directory instead.
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 # Import project-specific settings
 from project_info import (
@@ -55,6 +63,7 @@ extensions = [
     "sphinxcontrib.redoc",
     "sphinxcontrib.video",
     "sphinxcontrib.youtube",
+    "iati_sphinx_theme",  # Register theme as extension for LaTeX defaults
 ]
 
 templates_path = ["_templates"]
@@ -85,6 +94,19 @@ todo_include_todos = True
 
 html_context = {}
 
+# -- Options for LaTeX/PDF output -----------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#latex-options
+
+latex_documents = [
+    (
+        "index",  # startdocname
+        "iati-docs-base.tex",  # targetname
+        project_title,  # title
+        author,  # author
+        "manual",  # theme
+    ),
+]
+
 if os.environ.get("READTHEDOCS") == "True":
     project_slug = os.environ.get("READTHEDOCS_PROJECT")
     version_slug = os.environ.get("READTHEDOCS_VERSION")
@@ -94,6 +116,16 @@ if os.environ.get("READTHEDOCS") == "True":
     pdf_url = f"https://{project_slug}.readthedocs-hosted.com/_/downloads/{language_slug}/{version_slug}/pdf/"
 
     html_context["pdf_url"] = pdf_url
+else:
+    # Local dev builds have no RTD-hosted PDF. `make latexpdf` (wired up as
+    # a preLaunchTask in .vscode/tasks.json) builds one alongside the HTML
+    # output instead - only link to it if that's actually happened, so a
+    # plain `make html` or a terminal `sphinx-autobuild` run (which don't
+    # build the PDF) doesn't show a link that 404s.
+    pdf_filename = latex_documents[0][1].replace(".tex", ".pdf")
+    pdf_path = os.path.join(os.path.dirname(__file__), "_build", "html", pdf_filename)
+    if os.path.exists(pdf_path):
+        html_context["pdf_url"] = f"/{pdf_filename}"
 
 # -- Options for Texinfo output -------------------------------------------
 
