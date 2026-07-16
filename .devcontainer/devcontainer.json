@@ -9,11 +9,16 @@
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// texlive-luatex/-latex-extra/-fonts-recommended + latexmk + xindy give us
-	// the LuaLaTeX toolchain the theme's PDF styling needs to build a PDF
-	// locally (see .vscode/tasks.json and README.rst). sudo is needed since
-	// this image's default user (vscode) isn't root.
-	"postCreateCommand": "sudo apt-get update && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends texlive-luatex texlive-latex-extra texlive-fonts-recommended latexmk xindy && sudo rm -rf /var/lib/apt/lists/* && pip3 install --user pip-tools && pip3 install --user -r requirements_dev.txt",
+	// These packages let us build the PDF locally with either LaTeX engine the
+	// theme might select: texlive-luatex covers a LuaLaTeX build (fontspec +
+	// bundled fonts), while tex-gyre supplies tgtermes/tgheros etc. for a
+	// default pdfLaTeX build. tex-gyre must be named explicitly: on recent
+	// Debian it was split out of texlive-fonts-recommended into its own package
+	// that --no-install-recommends won't pull in. texlive-latex-extra/-recommended
+	// (+ latexmk, xindy) supply the shared styling/toolchain packages either
+	// engine needs (see .vscode/tasks.json and README.rst). sudo is needed
+	// since this image's default user (vscode) isn't root.
+	"postCreateCommand": "sudo apt-get update && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends texlive-luatex texlive-latex-extra texlive-fonts-recommended tex-gyre latexmk xindy && sudo rm -rf /var/lib/apt/lists/* && pip3 install --user pip-tools && pip3 install --user -r requirements_dev.txt",
 	// Warn if a host-built .ve is present; its python symlink dangles here and breaks the Sphinx Autobuild debugger.
 	"postStartCommand": "if [ -e .ve ] && ! .ve/bin/python -c '' 2>/dev/null; then printf '\\n\\033[1;31m⚠  A host-built .ve was found and its Python does not work in this container.\\033[0m\\n   It will break the Sphinx Autobuild debugger. The devcontainer installs deps via pip (no venv needed).\\n   Fix: remove the .ve, then rebuild/reopen.\\n\\n'; fi",
 	// Configure tool-specific properties.

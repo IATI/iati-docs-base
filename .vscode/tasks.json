@@ -4,7 +4,7 @@
         {
             "label": "Build PDF for Autobuild",
             "type": "shell",
-            "command": "mkdir -p _build/html && (make -e SPHINXBUILD=\"${command:python.interpreterPath} -m sphinx.cmd.build\" latexpdf && cp _build/latex/*.pdf _build/html/ || true)",
+            "command": "mkdir -p _build/html && (make -e SPHINXBUILD=\"/usr/local/bin/python -m sphinx.cmd.build\" latexpdf && cp _build/latex/*.pdf _build/html/ || true)",
             "options": {
                 "cwd": "${workspaceFolder}/docs"
             },
