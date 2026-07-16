@@ -5,13 +5,26 @@
             "name": "Sphinx Autobuild",
             "type": "debugpy",
             "request": "launch",
+            // Pin the image's Python, where the deps are installed. The image
+            // ships two interpreters (/usr/local/bin/python and Debian's
+            // /usr/bin/python3) on different minor versions; only the former
+            // has the --user packages, so leaving this to interpreter
+            // selection can launch the wrong one.
+            "python": "/usr/local/bin/python",
+            // sphinx-autobuild shells out to `python -m sphinx` to build. Let
+            // debugpy follow that child and it re-launches it in a way that
+            // drops the pip --user site (~/.local) from sys.path, so the build
+            // fails with "No module named sphinx". We debug the autobuild
+            // process itself, not the build subprocess, so don't follow it.
+            "subProcess": false,
             "module": "sphinx_autobuild",
             "args": [
                 "-b", "dirhtml",
                 "docs",
                 "docs/_build/html"
             ],
-            "justMyCode": false
+            "justMyCode": false,
+            "preLaunchTask": "Build PDF for Autobuild"
         }
     ]
 }
