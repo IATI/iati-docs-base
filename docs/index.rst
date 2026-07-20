@@ -2,28 +2,23 @@
 IATI Documentation
 ******************
 
-**API documentation renderer trial — Swagger UI.**
-
-This page embeds the *Widgets API* reference using `Swagger UI
-<https://github.com/swagger-api/swagger-ui>`_, the original OpenAPI renderer,
-with its built-in "Try it out" console. Swagger UI has no theme presets, so the
-IATI brand colour (``#155366``) is applied via plain CSS overrides; edit
-``docs/_static/api/swagger-ui.html`` to re-theme.
-
-.. note::
-
-   The "Try it out" console sends real requests. Against a live API it needs
-   CORS enabled on the server (or a proxy).
+This is the IATI Docs Base. It documents the **Widgets API** with an interactive
+reference — a renderer trial using `Swagger UI <https://github.com/swagger-api/swagger-ui>`_, which adds a
+"try it out" playground and richer theming than ReDoc.
 
 .. raw:: html
 
-     <iframe
-       src="_static/api/swagger-ui.html"
-       title="Widgets API reference (Swagger UI)"
-       style="display: block; width: 100%; height: 88vh; border: 0;"
-       loading="lazy">
-     </iframe>
-
+   <p style="margin: 1.5rem 0;">
+     <a href="api-reference/" target="_blank" rel="noopener"
+        style="display:inline-block; padding:0.65rem 1.15rem; background:#155366;
+               color:#fff; border-radius:6px; text-decoration:none; font-weight:600;">
+       Open the Widgets API reference &#8599;
+     </a>
+   </p>
+   <p style="color:#555; font-size:0.95rem;">Opens in a new tab &mdash; full width,
+   with the IATI header, and the whole content area given to the explorer. Accent
+   colour matches the theme brand colour (<code>#155366</code>); edit
+   <code>docs/_static/api/swagger-ui.html</code> to re-theme.</p>
 
 .. toctree::
     :hidden:
