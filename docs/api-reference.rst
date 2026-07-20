@@ -7,9 +7,10 @@ Widgets API
 .. raw:: html
 
    <style>
-     /* Scoped to this page: keep the IATI header, but hand the whole content
-        area to the API explorer — hide the left nav, breadcrumb, footer and the
-        page title, and drop the content max-width/padding. */
+     /* Keep the IATI header, but give the whole content area to the Swagger UI
+        reference (rendered natively by swagger-plugin-for-sphinx). Scoped to
+        this page: hide the theme's left nav, breadcrumb, footer and page title,
+        and drop the content max-width/padding. */
      .iati-breadcrumb { display: none !important; }
      .globaltoc { display: none !important; }
      .iati-footer { display: none !important; }
@@ -17,20 +18,27 @@ Widgets API
      .documentwrapper { padding: 0 !important; }
      .document { width: 100% !important; }
      .body { padding: 0 !important; }
-     .body h1 { display: none !important; }
+     /* Hide only the Sphinx page title (direct child of the section), not any
+        heading Swagger UI renders inside the content. */
+     .body > section > h1, .body > div[class*="section"] > h1 { display: none !important; }
      .body section, .body [class*="section"] { margin: 0 !important; padding: 0 !important; }
-     #api-explorer { display: block; width: 100%; border: 0; }
+     .swagger-ui .info .title { display: block !important; }
+     /* IATI brand (#155366) layered over Swagger UI's defaults. */
+     .swagger-ui .topbar { display: none; }
+     .swagger-ui .info { margin: 24px 16px; }
+     .swagger-ui .info .title { color: #155366; }
+     .swagger-ui .btn.execute { background: #155366; border-color: #155366; }
+     .swagger-ui .btn.authorize { color: #155366; border-color: #155366; }
+     .swagger-ui .btn.authorize svg { fill: #155366; }
+     .swagger-ui .opblock.opblock-get .opblock-summary-method { background: #155366; }
+     .swagger-ui .opblock.opblock-get { border-color: #155366; background: rgba(21,83,102,.04); }
+     .swagger-ui .opblock.opblock-get .opblock-summary { border-color: #155366; }
+     .swagger-ui a { color: #155366; }
    </style>
-   <iframe id="api-explorer" src="../_static/api/swagger-ui.html" title="Widgets API reference (Swagger UI)"></iframe>
-   <script>
-     (function () {
-       var f = document.getElementById('api-explorer');
-       function fit() {
-         var top = f.getBoundingClientRect().top + window.scrollY;
-         f.style.height = Math.max(480, window.innerHeight - top) + 'px';
-       }
-       window.addEventListener('resize', fit);
-       window.addEventListener('load', fit);
-       fit();
-     })();
-   </script>
+
+.. swagger-plugin:: specifications/test-widget-api.yaml
+
+..
+   "Try it out" is available by default, so swagger-options is omitted on purpose:
+   in swagger-plugin-for-sphinx 7.2.1, boolean values passed via swagger-options
+   render as Python True/False in the JS config and break SwaggerUIBundle.

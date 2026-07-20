@@ -48,6 +48,7 @@ docutils==0.22.4
     #   sphinx-togglebutton
     #   sphinxcontrib-opendataservices
     #   sphinxcontrib-opendataservices-jsonschema
+    #   swagger-plugin-for-sphinx
 h11==0.16.0
     # via uvicorn
 iati-sphinx-theme==3.1.1
@@ -67,6 +68,7 @@ jinja2==3.1.6
     #   myst-parser
     #   sphinx
     #   sphinxcontrib-redoc
+    #   swagger-plugin-for-sphinx
 jscc==0.3.0
     # via
     #   -r requirements.txt
@@ -138,6 +140,7 @@ pyyaml==6.0.3
     #   -r requirements.txt
     #   myst-parser
     #   sphinxcontrib-redoc
+    #   swagger-plugin-for-sphinx
 referencing==0.37.0
     # via
     #   -r requirements.txt
@@ -178,6 +181,7 @@ sphinx==9.1.0
     #   sphinxcontrib-redoc
     #   sphinxcontrib-video
     #   sphinxcontrib-youtube
+    #   swagger-plugin-for-sphinx
 sphinx-autobuild==2025.8.25
     # via -r requirements_dev.in
 sphinx-intl==2.3.2
@@ -222,6 +226,12 @@ sphinxcontrib-youtube==1.4.1
     # via -r requirements.txt
 starlette==0.52.1
     # via sphinx-autobuild
+swagger-plugin-for-sphinx==7.2.1
+    # via -r requirements.txt
+typing-extensions==4.16.0
+    # via
+    #   -r requirements.txt
+    #   swagger-plugin-for-sphinx
 urllib3==2.6.3
     # via
     #   -r requirements.txt

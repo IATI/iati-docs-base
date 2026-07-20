@@ -5,4 +5,5 @@ sphinxcontrib-redoc @ git+https://github.com/OpenDataServices/sphinxcontrib-redo
 sphinxcontrib-video
 sphinxcontrib-youtube
 sphinx-intl
+swagger-plugin-for-sphinx
 iati-sphinx-theme

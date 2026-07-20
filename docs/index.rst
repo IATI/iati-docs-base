@@ -3,8 +3,11 @@ IATI Documentation
 ******************
 
 This is the IATI Docs Base. It documents the **Widgets API** with an interactive
-reference — a renderer trial using `Swagger UI <https://github.com/swagger-api/swagger-ui>`_, which adds a
-"try it out" playground and richer theming than ReDoc.
+reference — a renderer trial using `Swagger UI <https://github.com/swagger-api/swagger-ui>`_,
+rendered **natively** by the `swagger-plugin-for-sphinx
+<https://github.com/SAP/swagger-plugin-for-sphinx>`_ extension (a real Sphinx
+directive; assets pinned and mirrored into the build, no CDN at load time). It
+has a built-in "try it out" console.
 
 .. raw:: html
 
@@ -16,9 +19,14 @@ reference — a renderer trial using `Swagger UI <https://github.com/swagger-api
      </a>
    </p>
    <p style="color:#555; font-size:0.95rem;">Opens in a new tab &mdash; full width,
-   with the IATI header, and the whole content area given to the explorer. Accent
-   colour matches the theme brand colour (<code>#155366</code>); edit
-   <code>docs/_static/api/swagger-ui.html</code> to re-theme.</p>
+   with the IATI header, and the whole content area given to the reference. Pin the
+   Swagger UI version in <code>docs/conf.py</code>; tweak the brand colour
+   (<code>#155366</code>) in <code>docs/api-reference.rst</code>.</p>
+
+.. note::
+
+   The "try it out" console sends real requests. Against a live API it needs CORS
+   enabled on the server (or a proxy).
 
 .. toctree::
     :hidden:

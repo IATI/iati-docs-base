@@ -55,10 +55,22 @@ extensions = [
     "sphinxcontrib.redoc",
     "sphinxcontrib.video",
     "sphinxcontrib.youtube",
+    "swagger_plugin_for_sphinx",
 ]
 
 templates_path = ["_templates"]
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
+
+# -- Swagger UI (swagger-plugin-for-sphinx) ----------------------------------
+# Render OpenAPI specs with a `.. swagger-plugin::` directive. Pin the Swagger UI
+# assets to a fixed version and mirror them into the build so pages don't fetch
+# from a CDN at load time (reproducible, offline-capable builds).
+_swagger_ui_version = "5.32.9"
+_swagger_ui_cdn = f"https://cdn.jsdelivr.net/npm/swagger-ui-dist@{_swagger_ui_version}"
+swagger_bundle_uri = f"{_swagger_ui_cdn}/swagger-ui-bundle.js"
+swagger_present_uri = f"{_swagger_ui_cdn}/swagger-ui-standalone-preset.js"
+swagger_css_uri = f"{_swagger_ui_cdn}/swagger-ui.css"
+swagger_mirror_external_resources = True
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
