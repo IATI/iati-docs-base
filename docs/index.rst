@@ -17,14 +17,12 @@ IATI brand colour (``#155366``) is applied via plain CSS overrides; edit
 
 .. raw:: html
 
-   <div style="position: relative; left: 50%; width: 100vw; margin-left: -50vw;">
      <iframe
        src="_static/api/swagger-ui.html"
        title="Widgets API reference (Swagger UI)"
        style="display: block; width: 100%; height: 88vh; border: 0;"
        loading="lazy">
      </iframe>
-   </div>
 
 
 .. toctree::
