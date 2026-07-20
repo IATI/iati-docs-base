@@ -17,14 +17,12 @@ re-theme.
 
 .. raw:: html
 
-   <div style="position: relative; left: 50%; width: 100vw; margin-left: -50vw;">
      <iframe
        src="_static/api/stoplight.html"
        title="Widgets API reference (Stoplight Elements)"
        style="display: block; width: 100%; height: 88vh; border: 0;"
        loading="lazy">
      </iframe>
-   </div>
 
 
 .. toctree::
