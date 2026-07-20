@@ -1,0 +1,268 @@
+---
+openapi: 3.0.3
+info:
+  title: Test Widget API
+  version: 1.0.0
+  description: >-
+    A fake API specification for testing purposes. This API manages widgets
+    and their associated components.
+servers:
+  - url: 'https://api.test-widgets.example.org'
+tags:
+  - name: widgets
+    description: Operations for widgets
+  - name: components
+    description: Operations for widget components
+paths:
+  /widgets:
+    get:
+      operationId: widgets_list
+      summary: List all widgets
+      description: Returns a paginated list of all widgets.
+      parameters:
+        - name: page
+          required: false
+          in: query
+          description: Page number for pagination.
+          schema:
+            type: integer
+            default: 1
+        - name: page_size
+          required: false
+          in: query
+          description: Number of results per page.
+          schema:
+            type: integer
+            default: 20
+        - name: status
+          required: false
+          in: query
+          description: Filter by widget status.
+          schema:
+            type: string
+            enum:
+              - active
+              - inactive
+              - pending
+      tags:
+        - widgets
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedWidgetList'
+    post:
+      operationId: widgets_create
+      summary: Create a new widget
+      description: Creates a new widget with the provided data.
+      tags:
+        - widgets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WidgetCreate'
+      responses:
+        '201':
+          description: Widget created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Widget'
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /widgets/{id}:
+    get:
+      operationId: widgets_retrieve
+      summary: Get a widget by ID
+      description: Returns details for a single widget.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          description: The unique identifier of the widget.
+          required: true
+      tags:
+        - widgets
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Widget'
+        '404':
+          description: Widget not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      operationId: widgets_delete
+      summary: Delete a widget
+      description: Permanently deletes a widget and all its components.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          description: The unique identifier of the widget.
+          required: true
+      tags:
+        - widgets
+      responses:
+        '204':
+          description: Widget deleted successfully
+        '404':
+          description: Widget not found
+  /widgets/{id}/components:
+    get:
+      operationId: widget_components_list
+      summary: List components for a widget
+      description: Returns all components belonging to a specific widget.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          description: The widget ID.
+          required: true
+      tags:
+        - components
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Component'
+components:
+  schemas:
+    Widget:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the widget.
+          example: "550e8400-e29b-41d4-a716-446655440000"
+        name:
+          type: string
+          description: The display name of the widget.
+          example: "Super Widget 3000"
+        status:
+          type: string
+          enum:
+            - active
+            - inactive
+            - pending
+          description: Current status of the widget.
+          example: "active"
+        created_at:
+          type: string
+          format: date-time
+          description: When the widget was created.
+          example: "2025-06-15T10:30:00Z"
+        component_count:
+          type: integer
+          description: Number of components attached to this widget.
+          example: 5
+      required:
+        - id
+        - name
+        - status
+    WidgetCreate:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The display name of the widget.
+          example: "My New Widget"
+        status:
+          type: string
+          enum:
+            - active
+            - inactive
+            - pending
+          default: pending
+          description: Initial status of the widget.
+      required:
+        - name
+    PaginatedWidgetList:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Total number of widgets.
+          example: 42
+        next:
+          type: string
+          format: uri
+          nullable: true
+          description: URL to the next page of results.
+          example: "https://api.test-widgets.example.org/widgets?page=2"
+        previous:
+          type: string
+          format: uri
+          nullable: true
+          description: URL to the previous page of results.
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Widget'
+    Component:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the component.
+          example: "7c9e6679-7425-40de-944b-e07fc1f90ae7"
+        widget_id:
+          type: string
+          format: uuid
+          description: ID of the parent widget.
+        type:
+          type: string
+          enum:
+            - button
+            - display
+            - sensor
+            - connector
+          description: The type of component.
+          example: "sensor"
+        serial_number:
+          type: string
+          description: Manufacturing serial number.
+          example: "SN-2025-001234"
+      required:
+        - id
+        - widget_id
+        - type
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code.
+          example: "WIDGET_NOT_FOUND"
+        message:
+          type: string
+          description: Human-readable error message.
+          example: "The requested widget does not exist."
+      required:
+        - code
+        - message
