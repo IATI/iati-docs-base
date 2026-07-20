@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>Widgets API — Stoplight Elements</title>
+  <script src="https://unpkg.com/@stoplight/elements/web-components.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/@stoplight/elements/styles.min.css" />
+  <style>
+    html, body { margin: 0; height: 100%; }
+    /* IATI brand accent (#155366) via Stoplight/Mosaic primary colour tokens.
+       Change these to re-theme. */
+    :root {
+      --color-primary: #155366;
+      --color-primary-dark: #103f4e;
+      --color-primary-light: #2d6a7d;
+    }
+    elements-api { display: block; height: 100vh; }
+  </style>
+</head>
+<body>
+  <elements-api
+    apiDescriptionUrl="../openapi/test-widget-api.yaml"
+    router="hash"
+    layout="sidebar"
+  ></elements-api>
+</body>
+</html>

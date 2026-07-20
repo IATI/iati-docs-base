@@ -39,12 +39,6 @@ plausible_domain = urlparse(tool_url).hostname if tool_url else None
 # Supported languages for the documentation
 languages = ["en", "fr", "es"]
 
-redoc = [
-    {
-        "name": "Widgets API",
-        "page": "api-docs/test-widget-api",
-        "spec": "specifications/test-widget-api.yaml",
-        "embed": True,
-        "template": "_templates/redoc-custom.j2",
-    }
-]
+# Redoc disabled for this renderer trial. The API reference is embedded on
+# the home page instead (see docs/index.rst and docs/_static/api/).
+redoc = []
