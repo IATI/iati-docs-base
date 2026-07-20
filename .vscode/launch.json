@@ -11,6 +11,13 @@
                 "docs",
                 "docs/_build/html"
             ],
+            // conf.py does `from project_info import ...`. Under Sphinx 9.1.0 the
+            // config dir is NOT added to sys.path (and `python -m` uses the
+            // absolute launch cwd, i.e. the repo root), so put docs/ on
+            // PYTHONPATH here to guarantee the import resolves when you hit F5.
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/docs"
+            },
             "justMyCode": false
         }
     ]
