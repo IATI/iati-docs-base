@@ -18,7 +18,8 @@
     opts['expand-responses'] }}>
   </redoc>
 
-  <script src="https://cdn.redoc.ly/redoc/latest/bundles/redoc.standalone.js"> </script>
+  {# Pinned to v2.5.4 (UMD); v3+ is ESM-only and exposes no global `Redoc` #}
+  <script src="https://cdn.redoc.ly/redoc/v2.5.4/bundles/redoc.standalone.js"></script>
 
   {% if embed %}
   <script type="application/json" id="spec">
